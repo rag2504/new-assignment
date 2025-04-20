@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="abc.css">
+</head>
+<style>
+/* Journals Section Styles */
+.journals-section {
+    padding: 80px 6%;
+    position: relative;
+    background: var(--light-bg);
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 12px;
+    position: relative;
+}
+
+.section-subtitle {
+    font-size: 1.1rem;
+    color: var(--light-text);
+    margin-bottom: 20px;
+}
+
+.section-divider {
+    height: 4px;
+    width: 80px;
+    background: var(--gradient);
+    margin: 0 auto;
+    border-radius: 2px;
+}
+
+.journals-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.journal-card {
+    background: var(--white);
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    transition: var(--transition);
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.journal-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+}
+
+.journal-badge {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: var(--gradient);
+    color: white;
+    padding: 5px 12px;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    z-index: 2;
+}
+
+.journal-image {
+    height: 250px;
+    overflow: hidden;
+    position: relative;
+}
+
+.journal-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition);
+}
+
+.journal-card:hover .journal-image img {
+    transform: scale(1.05);
+}
+
+.journal-content {
+    padding: 25px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.journal-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: var(--dark-text);
+}
+
+.journal-rating {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+}
+
+.journal-rating i {
+    color: #FFD700;
+    margin-right: 2px;
+}
+
+.rating-count {
+    color: var(--light-text);
+    margin-left: 5px;
+    font-size: 0.8rem;
+}
+
+.journal-price {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.price {
+    font-size: 1.3rem;
+    color: var(--secondary);
+    margin-right: 10px;
+}
+
+.original-price {
+    font-size: 0.9rem;
+    color: var(--light-text);
+    text-decoration: line-through;
+}
+
+.journal-description {
+    font-size: 0.95rem;
+    color: var(--light-text);
+    margin-bottom: 20px;
+    flex-grow: 1;
+}
+
+.journal-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: auto;
+}
+
+.add-to-cart-btn, .view-details-btn {
+    flex: 1;
+    padding: 10px 15px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border-radius: var(--border-radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.add-to-cart-btn {
+    background: var(--gradient);
+    color: white;
+    border: none;
+}
+
+.add-to-cart-btn:hover {
+    background: var(--gradient-hover);
+    transform: translateY(-3px);
+}
+
+.view-details-btn {
+    background: transparent;
+    color: var(--primary);
+    border: 1px solid var(--primary);
+    text-decoration: none;
+}
+
+.view-details-btn:hover {
+    background: var(--primary-light);
+    transform: translateY(-3px);
+}
+
+.cart-icon-container {
+    position: absolute;
+    top: 80px;
+    right: 6%;
+    z-index: 10;
+}
+
+.cart-icon {
+    background: var(--white);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-md);
+    text-decoration: none;
+    position: relative;
+    transition: var(--transition);
+}
+
+.cart-icon:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+    background: var(--primary-light);
+}
+
+.cart-icon i {
+    font-size: 1.2rem;
+    color: var(--primary);
+}
+
+.cart-count {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: var(--secondary);
+    color: white;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+}
+
+.cart-notification {
+    position: fixed;
+    bottom: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--primary);
+    color: white;
+    padding: 12px 25px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-md);
+    z-index: 1000;
+    transition: bottom 0.3s ease;
+    font-weight: 500;
+}
+
+.cart-notification.show {
+    bottom: 30px;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+    .journals-section {
+        padding: 60px 4%;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .cart-icon-container {
+        top: 60px;
+        right: 4%;
+    }
+    
+    .journals-container {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .journal-actions {
+        flex-direction: column;
+    }
+    
+    .cart-icon-container {
+        top: 20px;
+    }
+}
+</style>
+
+<body>
+	<!-- HTML SECTION -->
+<!-- Written Journals Section -->
+<section class="journals-section" id="journals">
+    <div class="section-header">
+        <h2 class="section-title">Written Journals</h2>
+        <p class="section-subtitle">Premium academic journals for your studies</p>
+        <div class="section-divider"></div>
+    </div>
+
+    <div class="cart-icon-container">
+        <a href="cart.html" class="cart-icon">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="cart-count">0</span>
+        </a>
+    </div>
+
+    <div class="journals-container">
+        <!-- Physics Journal -->
+        <div class="journal-card">
+            <div class="journal-badge">Bestseller</div>
+            <div class="journal-image">
+                <img src="chem.webp" alt="Physics Journal">
+            </div>
+            <div class="journal-content">
+                <h3 class="journal-title">Physics Journal</h3>
+                <div class="journal-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                    <span class="rating-count">(124)</span>
+                </div>
+                <div class="journal-price">
+                    <span class="price">₹399</span>
+                    <span class="original-price">₹599</span>
+                </div>
+                <p class="journal-description">Comprehensive physics journal with solved examples, formulas, and practice problems.</p>
+                <div class="journal-actions">
+                    <button class="add-to-cart-btn" data-id="physics" data-price="399" data-name="Physics Journal">
+                        <i class="fas fa-cart-plus"></i> Add to Cart
+                    </button>
+                    <a href="journal-details.html?id=physics" class="view-details-btn">
+                        <i class="fas fa-eye"></i> View Details
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chemistry Journal -->
+        <div class="journal-card">
+            <div class="journal-badge">New</div>
+            <div class="journal-image">
+                <img src="chem.webp" alt="Chemistry Journal">
+            </div>
+            <div class="journal-content">
+                <h3 class="journal-title">Chemistry Journal</h3>
+                <div class="journal-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <span class="rating-count">(98)</span>
+                </div>
+                <div class="journal-price">
+                    <span class="price">₹499</span>
+                    <span class="original-price">₹699</span>
+                </div>
+                <p class="journal-description">In-depth chemistry journal covering organic, inorganic chemistry with experiment guides.</p>
+                <div class="journal-actions">
+                    <button class="add-to-cart-btn" data-id="chemistry" data-price="499" data-name="Chemistry Journal">
+                        <i class="fas fa-cart-plus"></i> Add to Cart
+                    </button>
+                    <a href="journal-details.html?id=chemistry" class="view-details-btn">
+                        <i class="fas fa-eye"></i> View Details
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Biology Journal -->
+        <div class="journal-card">
+            <div class="journal-badge">Popular</div>
+            <div class="journal-image">
+                <img src="chem.webp" alt="Biology Journal">
+            </div>
+            <div class="journal-content">
+                <h3 class="journal-title">Biology Journal</h3>
+                <div class="journal-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                    <span class="rating-count">(87)</span>
+                </div>
+                <div class="journal-price">
+                    <span class="price">₹499</span>
+                    <span class="original-price">₹699</span>
+                </div>
+                <p class="journal-description">Complete biology journal with detailed diagrams, case studies, and concept explanations.</p>
+                <div class="journal-actions">
+                    <button class="add-to-cart-btn" data-id="biology" data-price="499" data-name="Biology Journal">
+                        <i class="fas fa-cart-plus"></i> Add to Cart
+                    </button>
+                    <a href="journal-details.html?id=biology" class="view-details-btn">
+                        <i class="fas fa-eye"></i> View Details
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- JAVASCRIPT -->
+<script>
+// Cart functionality
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize cart from localStorage
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    updateCartCount();
+
+    // Add event listeners to Add to Cart buttons
+    const addToCartButtons = document.querySelectorAll('.add-to-cart-btn');
+    addToCartButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const productId = this.dataset.id;
+            const productName = this.dataset.name;
+            const productPrice = parseInt(this.dataset.price);
+            
+            // Check if product already in cart
+            const existingProductIndex = cart.findIndex(item => item.id === productId);
+            
+            if (existingProductIndex > -1) {
+                // Increment quantity if already in cart
+                cart[existingProductIndex].quantity += 1;
+            } else {
+                // Add new item to cart
+                cart.push({
+                    id: productId,
+                    name: productName,
+                    price: productPrice,
+                    quantity: 1
+                });
+            }
+            
+            // Save cart to localStorage
+            localStorage.setItem('cart', JSON.stringify(cart));
+            
+            // Update cart count
+            updateCartCount();
+            
+            // Show added to cart notification
+            showNotification(`${productName} added to cart!`);
+        });
+    });
+    
+    // Function to update cart count
+    function updateCartCount() {
+        const cartCount = document.querySelector('.cart-count');
+        if (cartCount) {
+            const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+            cartCount.textContent = totalItems;
+        }
+    }
+    
+    // Function to show notification
+    function showNotification(message) {
+        // Create notification element if it doesn't exist
+        let notification = document.querySelector('.cart-notification');
+        if (!notification) {
+            notification = document.createElement('div');
+            notification.className = 'cart-notification';
+            document.body.appendChild(notification);
+        }
+        
+        // Set message and show notification
+        notification.textContent = message;
+        notification.classList.add('show');
+        
+        // Hide notification after 3 seconds
+        setTimeout(() => {
+            notification.classList.remove('show');
+        }, 3000);
+    }
+});
+</script>
+</body>
+</html>
