@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Business Section</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #3a1c71;
+            --primary-dark: #2a1561;
+            --secondary: #d76d77;
+            --accent: #ffaf7b;
+            --white: #ffffff;
+            --dark-text: #333333;
+            --light-text: #777777;
+            --light-bg: #fafafa;
+
+            /* Gradients */
+            --gradient: linear-gradient(135deg, #3a1c71, #d76d77, #ffaf7b);
+            --gradient-hover: linear-gradient(135deg, #4a2c81, #e77d87, #ffbf8b);
+            --gradient-light: linear-gradient(135deg, rgba(58, 28, 113, 0.9), rgba(215, 109, 119, 0.9), rgba(255, 175, 123, 0.9));
+
+            /* Shadows */
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+
+            /* Border Radius */
+            --border-radius-sm: 4px;
+            --border-radius: 8px;
+            --border-radius-lg: 12px;
+        }
+
+        body {
+            background: var(--gradient);
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-text);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Our Business Section Styles */
+        .our-business {
+            padding: 100px 6%;
+            position: relative;
+            overflow: hidden;
+            background: var(--gradient);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 70px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-subtitle {
+            font-size: 16px;
+            color: var(--white);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            display: inline-block;
+            position: relative;
+        }
+
+        .section-subtitle::before {
+            content: '';
+            position: absolute;
+            left: -30px;
+            top: 50%;
+            width: 20px;
+            height: 2px;
+            background: var(--white);
+            transform: translateY(-50%);
+        }
+
+        .section-subtitle::after {
+            content: '';
+            position: absolute;
+            right: -30px;
+            top: 50%;
+            width: 20px;
+            height: 2px;
+            background: var(--white);
+            transform: translateY(-50%);
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 42px;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--white);
+            border-radius: 2px;
+        }
+
+        .section-description {
+            max-width: 800px;
+            margin: 0 auto;
+            color: var(--white);
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+        /* Services Container */
+        .services-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Service Card */
+        .service-card {
+            background-color: var(--white);
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-md);
+            overflow: hidden;
+            width: 350px;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .service-image {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .service-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover .service-image img {
+            transform: scale(1.05);
+        }
+
+        .service-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--primary);
+            color: var(--white);
+            font-size: 12px;
+            font-weight: 600;
+            padding: 6px 12px;
+            border-radius: var(--border-radius-sm);
+            box-shadow: var(--shadow-sm);
+            z-index: 2;
+        }
+
+        .service-content {
+            padding: 30px;
+            position: relative;
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--white);
+            border: 2px solid var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .service-icon i {
+            font-size: 24px;
+            color: var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover .service-icon {
+            background: var(--gradient);
+            border-color: transparent;
+        }
+
+        .service-card:hover .service-icon i {
+            color: var(--white);
+            transform: rotate(360deg);
+        }
+
+        .service-title {
+            font-weight: 700;
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .service-description {
+            color: var(--light-text);
+            font-size: 14px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .service-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--secondary);
+            font-weight: 600;
+            font-size: 14px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .service-link i {
+            margin-left: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .service-link:hover {
+            color: var(--primary);
+        }
+
+        .service-link:hover i {
+            transform: translateX(5px);
+        }
+
+        /* Assignment Portal Section */
+        .assignment-portal {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-md);
+            max-width: 600px;
+            margin: 60px auto 0;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .portal-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            color: var(--white);
+        }
+
+        .portal-header i {
+            font-size: 24px;
+            margin-right: 15px;
+        }
+
+        .portal-header h3 {
+            font-size: 24px;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .portal-item {
+            background-color: rgba(255, 255, 255, 0.15);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .portal-item:hover {
+            background-color: rgba(255, 255, 255, 0.25);
+            transform: translateX(5px);
+        }
+
+        .portal-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .portal-item-icon {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        .portal-item-icon i {
+            color: var(--white);
+            font-size: 16px;
+        }
+
+        .portal-item-content {
+            flex-grow: 1;
+        }
+
+        .portal-item-title {
+            color: var(--white);
+            font-weight: 600;
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .portal-item-description {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 12px;
+        }
+
+        /* Action Buttons */
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .action-button {
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .action-button i {
+            margin-right: 8px;
+        }
+
+        .primary-button {
+            background-color: var(--white);
+            color: var(--primary);
+            box-shadow: var(--shadow-md);
+        }
+
+        .primary-button:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .secondary-button {
+            background-color: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .secondary-button:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-5px);
+        }
+
+        /* Decorative Elements */
+        .decorative-circle {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.1;
+            background: var(--white);
+        }
+
+        .circle-1 {
+            width: 300px;
+            height: 300px;
+            top: -50px;
+            right: -100px;
+        }
+
+        .circle-2 {
+            width: 200px;
+            height: 200px;
+            bottom: 100px;
+            left: -50px;
+        }
+
+        /* Enhanced Responsive Styles */
+        @media (max-width: 1200px) {
+            .services-container {
+                gap: 20px;
+            }
+            
+            .service-card {
+                width: 320px;
+            }
+        }
+
+        @media (max-width: 991px) {
+            .our-business {
+                padding: 80px 4%;
+            }
+            
+            .section-title {
+                font-size: 36px;
+            }
+            
+            .services-container {
+                gap: 15px;
+            }
+            
+            .service-card {
+                width: 290px;
+            }
+            
+            .service-content {
+                padding: 25px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .our-business {
+                padding: 60px 4%;
+            }
+            
+            .section-header {
+                margin-bottom: 50px;
+            }
+            
+            .section-title {
+                font-size: 32px;
+            }
+            
+            .services-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .service-card {
+                width: 100%;
+                max-width: 400px;
+                margin-bottom: 20px;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .action-button {
+                width: 100%;
+                max-width: 250px;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .our-business {
+                padding: 50px 3%;
+            }
+            
+            .section-subtitle {
+                font-size: 14px;
+            }
+            
+            .section-title {
+                font-size: 28px;
+            }
+            
+            .section-description {
+                font-size: 14px;
+            }
+            
+            .service-content {
+                padding: 20px;
+            }
+            
+            .service-title {
+                font-size: 20px;
+            }
+            
+            .service-description {
+                font-size: 13px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="our-business">
+        <!-- Decorative elements -->
+        <div class="decorative-circle circle-1"></div>
+        <div class="decorative-circle circle-2"></div>
+        
+        <div class="section-header">
+            <span class="section-subtitle">What We Offer</span>
+            <h2 class="section-title">Our Business</h2>
+            <p class="section-description">
+                Your one-stop solution for all your academic needs. Get professional help from experienced writers and secure the grades you deserve.
+            </p>
+        </div>
+        
+        <div class="services-container">
+            <!-- Assignment Completion Card -->
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="assignemnt-img.jpg" alt="Assignment Completion">
+                    <div class="service-badge">Most Popular</div>
+                </div>
+                <div class="service-content">
+                    <div class="service-icon">
+                        <i class="fas fa-pencil-alt"></i>
+                    </div>
+                    <h3 class="service-title">Assignment Completion</h3>
+                    <p class="service-description">
+                        Get expert assistance with all types of academic assignments. Our specialists will help you complete high-quality papers that meet all requirements and deadlines.
+                    </p>
+                    <a href="#" class="service-link">Learn more <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <!-- Book Completion Card -->
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="book.webp" alt="Book Completion">
+                </div>
+                <div class="service-content">
+                    <div class="service-icon">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <h3 class="service-title">Book Completion</h3>
+                    <p class="service-description">
+                        Professional assistance with book writing, editing, and formatting. Our experts will help you complete your book project with comprehensive research and engaging content.
+                    </p>
+                    <a href="#" class="service-link">Learn more <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <!-- PPT/Word Making Card -->
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="ppt.jpeg" alt="PPT/Word Making">
+                </div>
+                <div class="service-content">
+                    <div class="service-icon">
+                        <i class="fas fa-file-powerpoint"></i>
+                    </div>
+                    <h3 class="service-title">PPT/Word Making</h3>
+                    <p class="service-description">
+                        Professional PowerPoint presentations and Word documents created to perfection. Our designers will create visually appealing and content-rich documents for any purpose.
+                    </p>
+                    <a href="#" class="service-link">Learn more <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+        
+    <script>
+        // Enhanced animation on scroll effect
+        document.addEventListener('DOMContentLoaded', () => {
+            const serviceCards = document.querySelectorAll('.service-card');
+            const actionButtons = document.querySelectorAll('.action-button');
+            
+            // Function to check if element is in viewport
+            function isInViewport(element) {
+                const rect = element.getBoundingClientRect();
+                return (
+                    rect.top >= 0 &&
+                    rect.left >= 0 &&
+                    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+                );
+            }
+            
+            // Add animation when scrolling
+            function checkElements() {
+                serviceCards.forEach((card, index) => {
+                    if (isInViewport(card)) {
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'translateY(0)';
+                        }, index * 150);
+                    }
+                });
+                
+                actionButtons.forEach((button, index) => {
+                    if (isInViewport(button)) {
+                        setTimeout(() => {
+                            button.style.opacity = '1';
+                            button.style.transform = 'translateY(0)';
+                        }, index * 100 + 600);
+                    }
+                });
+            }
+            
+            // Initialize elements with starting styles
+            serviceCards.forEach((card) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            });
+            
+            actionButtons.forEach((button) => {
+                button.style.opacity = '0';
+                button.style.transform = 'translateY(20px)';
+                button.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            });
+            
+            // Check on scroll and on load
+            window.addEventListener('scroll', checkElements);
+            window.addEventListener('load', checkElements);
+            
+            // Trigger initial check
+            setTimeout(checkElements, 100);
+        });
+    </script>
+</body>
+</html>

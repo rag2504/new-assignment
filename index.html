@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
 </head>
 <body>
     <!-- Main navigation bar -->
@@ -196,85 +195,77 @@
             </form>
         </div>
     </div>
+     <section class="our-business">
+        <!-- Decorative elements -->
+        <div class="decorative-circle circle-1"></div>
+        <div class="decorative-circle circle-2"></div>
+        
+        <div class="section-header">
+            <span class="section-subtitle">What We Offer</span>
+            <h2 class="section-title">Our Business</h2>
+            <p class="section-description">
+                Your one-stop solution for all your academic needs. Get professional help from experienced writers and secure the grades you deserve.
+            </p>
+        </div>
+        
+        <div class="services-container">
+            <!-- Assignment Completion Card -->
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="assignemnt-img.jpg" alt="Assignment Completion">
+                    <div class="service-badge">Most Popular</div>
+                </div>
+                <div class="service-content">
+                    <div class="service-icon">
+                        <i class="fas fa-pencil-alt"></i>
+                    </div>
+                    <h3 class="service-title">Assignment Completion</h3>
+                    <p class="service-description">
+                        Get expert assistance with all types of academic assignments. Our specialists will help you complete high-quality papers that meet all requirements and deadlines.
+                    </p>
+                    <a href="#" class="service-link">Learn more <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <!-- Book Completion Card -->
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="book.webp" alt="Book Completion">
+                </div>
+                <div class="service-content">
+                    <div class="service-icon">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <h3 class="service-title">Book Completion</h3>
+                    <p class="service-description">
+                        Professional assistance with book writing, editing, and formatting. Our experts will help you complete your book project with comprehensive research and engaging content.
+                    </p>
+                    <a href="#" class="service-link">Learn more <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <!-- PPT/Word Making Card -->
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="ppt.jpeg" alt="PPT/Word Making">
+                </div>
+                <div class="service-content">
+                    <div class="service-icon">
+                        <i class="fas fa-file-powerpoint"></i>
+                    </div>
+                    <h3 class="service-title">PPT/Word Making</h3>
+                    <p class="service-description">
+                        Professional PowerPoint presentations and Word documents created to perfection. Our designers will create visually appealing and content-rich documents for any purpose.
+                    </p>
+                    <a href="#" class="service-link">Learn more <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+<script src="script.js" defer></script>
 
 
-    <script>
-        // Select DOM elements
-        const hamburger = document.getElementById('hamburger-menu');
-        const navLinks = document.getElementById('navLinks');
-        const overlay = document.getElementById('mobile-overlay');
-        const navbar = document.querySelector('.navbar');
-        
-        // Toggle mobile menu function
-        function toggleMenu() {
-            hamburger.classList.toggle('open');
-            navLinks.classList.toggle('active');
-            overlay.classList.toggle('active');
-            
-            // Prevent body scrolling when menu is open
-            if (navLinks.classList.contains('active')) {
-                document.body.style.overflow = 'hidden';
-            } else {
-                document.body.style.overflow = '';
-            }
-        }
-        
-        // Event listeners
-        hamburger.addEventListener('click', toggleMenu);
-        overlay.addEventListener('click', toggleMenu);
-        
-        // Close menu when clicking on a link (for mobile)
-        const mobileLinks = navLinks.querySelectorAll('a');
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                if (navLinks.classList.contains('active')) {
-                    toggleMenu();
-                }
-            });
-        });
-        
-        // Shrink navbar on scroll
-        window.addEventListener('scroll', function() {
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
-        
-        // Fix for iOS Safari 100vh issue and improved mobile menu rendering
-        function setMobileHeight() {
-            const vh = window.innerHeight * 0.01;
-            document.documentElement.style.setProperty('--vh', `${vh}px`);
-            
-            // Adjust mobile menu height for better iOS compatibility
-            if (window.innerWidth <= 1000) {
-                navLinks.style.height = `${window.innerHeight}px`;
-            } else {
-                navLinks.style.height = '';
-            }
-        }
-        
-        // Set initial height
-        setMobileHeight();
-        
-        // Reset on resize and orientation change
-        window.addEventListener('resize', setMobileHeight);
-        window.addEventListener('orientationchange', setMobileHeight);
-        
-        // Add active class to current page link
-        document.addEventListener('DOMContentLoaded', function() {
-            const currentPage = window.location.pathname.split('/').pop();
-            const navLinks = document.querySelectorAll('.nav-links a');
-            
-            navLinks.forEach(link => {
-                const linkHref = link.getAttribute('href');
-                if (linkHref === currentPage || (currentPage === '' && linkHref === 'index.html')) {
-                    link.style.color = 'var(--secondary)';
-                    link.style.backgroundColor = 'var(--secondary-light)';
-                }
-            });
-        });
-    </script>
 </body>
 </html>
