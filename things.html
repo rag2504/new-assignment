@@ -15,6 +15,7 @@
         }
 
         :root {
+            /* Updated color palette to match site theme */
             --primary: #3a1c71;
             --primary-dark: #2a1561;
             --secondary: #d76d77;
@@ -24,7 +25,7 @@
             --light-text: #777777;
             --light-bg: #fafafa;
 
-            /* Gradients */
+            /* Updated gradients to match website */
             --gradient: linear-gradient(135deg, #3a1c71, #d76d77, #ffaf7b);
             --gradient-hover: linear-gradient(135deg, #4a2c81, #e77d87, #ffbf8b);
             --gradient-dark: linear-gradient(135deg, #2a1561, #c75d67, #ef9f6b);
@@ -50,40 +51,56 @@
             -moz-osx-font-smoothing: grayscale;
             background: var(--gradient);
             background-attachment: fixed;
+            margin: 0;
+            padding: 0;
         }
 
-        
-
-         .price-quote-container {
+        .price-quote-container {
             width: 100%;
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
 
-        /* Quote Section Styles - REDUCED HEIGHT */
+        /* Quote Section Styles - UPDATED BACKGROUND */
         .price-quote-section {
-            padding: 40px 0; /* Reduced from 80px */
+            padding: 40px 0;
             position: relative;
             overflow: hidden;
+            background: linear-gradient(135deg, #3a1c71, #d76d77, #ffaf7b);
+            background-attachment: fixed;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+
+        /* Add a subtle overlay pattern */
+        .price-quote-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+            z-index: 0;
         }
 
         .price-quote-header {
             text-align: center;
-            margin-bottom: 30px; /* Reduced from 60px */
             position: relative;
             z-index: 1;
-            margin-top: 100px;
-            margin-bottom: 100px;
+            margin-top: 20px;
+            margin-bottom: 40px;
         }
 
         .price-quote-subtitle {
-            font-size: 14px; /* Reduced from 16px */
+            font-size: 18px;
             color: var(--white);
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 2px;
-            margin-bottom: 10px; /* Reduced from 15px */
+            margin-bottom: 10px;
             display: inline-block;
             position: relative;
         }
@@ -108,10 +125,10 @@
 
         .price-quote-title {
             font-family: 'Playfair Display', serif;
-            font-size: 36px; /* Reduced from 42px */
+            font-size: 42px;
             font-weight: 700;
             color: var(--white);
-            margin-bottom: 15px; /* Reduced from 20px */
+            margin-bottom: 15px;
             position: relative;
             display: inline-block;
         }
@@ -119,11 +136,11 @@
         .price-quote-title::after {
             content: '';
             position: absolute;
-            bottom: -8px; /* Reduced from -10px */
+            bottom: -8px;
             left: 50%;
             transform: translateX(-50%);
-            width: 70px; /* Reduced from 80px */
-            height: 2px; /* Reduced from 3px */
+            width: 70px;
+            height: 2px;
             background: var(--white);
             border-radius: 2px;
         }
@@ -132,8 +149,8 @@
             max-width: 800px;
             margin: 0 auto;
             color: var(--white);
-            font-size: 15px; /* Reduced from 16px */
-            line-height: 1.7; /* Reduced from 1.8 */
+            font-size: 16px;
+            line-height: 1.7;
             margin-bottom: 20px;
         }
 
@@ -142,7 +159,7 @@
             display: flex;
             justify-content: center;
             align-items: stretch;
-            gap: 30px; /* Reduced from 40px */
+            gap: 30px;
             position: relative;
             z-index: 2;
         }
@@ -154,7 +171,7 @@
             border-radius: var(--border-radius-lg);
             overflow: hidden;
             box-shadow: var(--shadow-lg);
-            height: 450px; /* Fixed height */
+            height: 450px;
         }
 
         .price-quote-image-box img {
@@ -179,24 +196,24 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            padding: 25px; /* Reduced from 30px */
+            padding: 25px;
             background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
             color: var(--white);
         }
 
         .price-quote-image-title {
             font-family: 'Playfair Display', serif;
-            font-size: 24px; /* Reduced from 28px */
+            font-size: 24px;
             font-weight: 700;
-            margin-bottom: 8px; /* Reduced from 10px */
+            margin-bottom: 8px;
         }
 
         .price-quote-image-text {
-            font-size: 14px; /* Reduced from 16px */
-            line-height: 1.5; /* Reduced from 1.6 */
+            font-size: 14px;
+            line-height: 1.5;
         }
         
-        /* New social media styles */
+        /* Social media styles */
         .social-links {
             display: flex;
             align-items: center;
@@ -228,7 +245,7 @@
             background: rgba(255,255,255,0.2);
             padding: 4px 12px;
             border-radius: 20px;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             font-size: 12px;
             font-weight: 600;
             letter-spacing: 1px;
@@ -240,45 +257,46 @@
             max-width: 520px;
             background-color: var(--white);
             border-radius: var(--border-radius-lg);
-            padding: 30px; /* Reduced from 40px */
+            padding: 30px;
             box-shadow: var(--shadow-lg);
-            height: 450px; /* Match height with left side */
-            overflow-y: auto; /* Add scroll if content overflows */
+            height: 450px;
+            overflow-y: auto;
+            position: relative;
         }
 
         .price-quote-form-header {
             text-align: center;
-            margin-bottom: 20px; /* Reduced from 30px */
+            margin-bottom: 20px;
         }
 
         .price-quote-form-title {
             font-family: 'Playfair Display', serif;
-            font-size: 24px; /* Reduced from 28px */
+            font-size: 24px;
             font-weight: 700;
             color: var(--primary);
-            margin-bottom: 8px; /* Reduced from 10px */
+            margin-bottom: 8px;
         }
 
         .price-quote-form-description {
             color: var(--light-text);
-            font-size: 14px; /* Reduced from 15px */
+            font-size: 14px;
         }
 
         .price-quote-form {
             display: flex;
             flex-direction: column;
-            gap: 15px; /* Reduced from 20px */
+            gap: 15px;
         }
 
         .price-quote-form-group {
             display: flex;
             flex-direction: column;
-            gap: 6px; /* Reduced from 8px */
+            gap: 6px;
         }
 
         .price-quote-form-label {
             font-weight: 600;
-            font-size: 14px; /* Reduced from 15px */
+            font-size: 14px;
             color: var(--dark-text);
             display: flex;
             align-items: center;
@@ -290,12 +308,13 @@
         }
 
         .price-quote-form-input {
-            padding: 10px 12px; /* Reduced from 12px 15px */
+            padding: 12px 15px;
             border: 1px solid rgba(0, 0, 0, 0.1);
             border-radius: var(--border-radius);
             font-family: 'Poppins', sans-serif;
-            font-size: 14px; /* Reduced from 15px */
+            font-size: 14px;
             transition: all 0.3s ease;
+            width: 100%;
         }
 
         .price-quote-form-input:focus {
@@ -305,21 +324,21 @@
         }
 
         textarea.price-quote-form-input {
-            min-height: 100px; /* Reduced from 120px */
+            min-height: 100px;
             resize: vertical;
         }
 
         .price-quote-form-submit {
-            padding: 12px 0; /* Reduced from 14px */
+            padding: 14px 0;
             background: var(--gradient);
             color: var(--white);
             font-weight: 600;
-            font-size: 15px; /* Reduced from 16px */
+            font-size: 16px;
             border: none;
             border-radius: var(--border-radius);
             cursor: pointer;
             transition: all 0.3s ease;
-            margin-top: 8px; /* Reduced from 10px */
+            margin-top: 8px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -332,51 +351,32 @@
             box-shadow: var(--shadow-md);
         }
 
-        /* Animated elements */
+        /* Animated elements - IMPROVED BADGE */
         .price-quote-badge {
             position: absolute;
-            top: -15px;
-            right: 30px;
+            top: -5px;
+            right: 10px;
             background: var(--accent);
             color: var(--primary-dark);
             font-weight: 700;
-            font-size: 16px; /* Reduced from 18px */
-            padding: 8px 16px; /* Reduced from 10px 20px */
+            font-size: 16px;
+            padding: 8px 16px;
             border-radius: var(--border-radius);
-            box-shadow: var(--shadow-md);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
             transform: rotate(5deg);
             z-index: 3;
             animation: float-tag 3s ease-in-out infinite;
+            border: 2px solid rgba(255, 255, 255, 0.7);
+            text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
         }
 
         @keyframes float-tag {
-            0% { transform: translateY(0) rotate(5deg); }
-            50% { transform: translateY(-10px) rotate(5deg); }
+            0% { transform: translateY(10px) rotate(5deg); }
+            50% { transform: translateY(-25px) rotate(5deg); }
             100% { transform: translateY(0) rotate(5deg); }
         }
 
-        /* Decorative Elements */
-        .price-quote-decorative-circle {
-            position: absolute;
-            border-radius: 50%;
-            opacity: 0.1;
-            background: var(--white);
-        }
-
-        .price-quote-circle-1 {
-            width: 300px;
-            height: 300px;
-            top: -50px;
-            right: -100px;
-        }
-
-        .price-quote-circle-2 {
-            width: 200px;
-            height: 200px;
-            bottom: 100px;
-            left: -50px;
-        }
-
+       
         /* Success Message */
         .price-quote-success-message {
             display: none;
@@ -390,7 +390,7 @@
             font-weight: 500;
         }
 
-        /* IMPROVED RESPONSIVE STYLES */
+        /* RESPONSIVE STYLES - ENHANCED */
         @media (max-width: 1024px) {
             .price-quote-wrapper {
                 gap: 25px;
@@ -410,12 +410,18 @@
         @media (max-width: 991px) {
             .price-quote-section {
                 padding: 30px 0;
+                min-height: auto;
+            }
+            
+            .price-quote-header {
+                margin-top: 10px;
+                margin-bottom: 30px;
             }
             
             .price-quote-wrapper {
                 flex-direction: column;
                 align-items: center;
-                gap: 20px;
+                gap: 25px;
             }
 
             .price-quote-image-box, .price-quote-form-box {
@@ -424,28 +430,38 @@
             }
 
             .price-quote-image-box {
-                height: 250px; /* Reduced height on tablets */
+                height: 280px;
             }
             
             .price-quote-form-box {
                 padding: 25px;
-                height: auto; /* Auto height on tablets */
+                height: auto;
+                margin-bottom: 30px;
+            }
+            
+            .price-quote-badge {
+                top: -15px;
+                right: 10px;
             }
         }
 
         @media (max-width: 768px) {
             .price-quote-title {
-                font-size: 30px;
+                font-size: 36px;
+            }
+            
+            .price-quote-subtitle {
+                font-size: 16px;
             }
             
             .price-quote-description {
-                font-size: 14px;
+                font-size: 15px;
+                padding: 0 10px;
             }
 
             .price-quote-badge {
                 font-size: 14px;
                 padding: 6px 14px;
-                right: 20px;
             }
             
             .price-quote-form-title {
@@ -455,27 +471,52 @@
             .price-quote-image-title {
                 font-size: 22px;
             }
+            
+            .price-quote-form-input {
+                padding: 12px;
+            }
         }
 
         @media (max-width: 576px) {
             .price-quote-section {
-                padding: 25px 0;
+                padding: 20px 0;
+            }
+            
+            .price-quote-container {
+                padding: 0 15px;
             }
             
             .price-quote-header {
-                margin-bottom: 20px;
+                margin-bottom: 25px;
             }
 
             .price-quote-subtitle {
-                font-size: 12px;
+                font-size: 14px;
+            }
+            
+            .price-quote-subtitle::before, .price-quote-subtitle::after {
+                width: 15px;
+            }
+            
+            .price-quote-subtitle::before {
+                left: -25px;
+            }
+            
+            .price-quote-subtitle::after {
+                right: -25px;
             }
 
             .price-quote-title {
-                font-size: 26px;
+                font-size: 32px;
+            }
+            
+            .price-quote-description {
+                font-size: 14px;
             }
 
             .price-quote-form-box {
                 padding: 20px 15px;
+                border-radius: var(--border-radius);
             }
 
             .price-quote-form-title {
@@ -483,7 +524,8 @@
             }
             
             .price-quote-image-box {
-                height: 200px; /* Further reduced height on mobile */
+                height: 220px;
+                border-radius: var(--border-radius);
             }
             
             .price-quote-image-content {
@@ -496,12 +538,13 @@
             }
             
             .price-quote-image-text {
-                font-size: 12px;
+                font-size: 13px;
                 line-height: 1.4;
             }
             
             .price-quote-form-input {
-                padding: 8px 10px;
+                padding: 10px 12px;
+                font-size: 14px;
             }
             
             textarea.price-quote-form-input {
@@ -509,17 +552,36 @@
             }
             
             .price-quote-form-submit {
-                padding: 10px 0;
+                padding: 12px 0;
+                font-size: 15px;
             }
             
             .price-quote-form-label {
                 font-size: 13px;
             }
+            
+            .social-links a {
+                width: 32px;
+                height: 32px;
+                margin-right: 10px;
+            }
+            
+            .price-quote-wrapper {
+                gap: 20px;
+            }
         }
 
         @media (max-width: 375px) {
             .price-quote-title {
-                font-size: 22px;
+                font-size: 28px;
+            }
+            
+            .price-quote-subtitle {
+                font-size: 12px;
+            }
+            
+            .price-quote-description {
+                font-size: 13px;
             }
             
             .price-quote-badge {
@@ -533,8 +595,44 @@
                 font-size: 18px;
             }
             
+            .price-quote-form-description {
+                font-size: 13px;
+            }
+            
             .price-quote-image-box {
                 height: 180px;
+            }
+            
+            .price-quote-form-input {
+                padding: 10px;
+            }
+            
+            .price-quote-form-submit {
+                padding: 10px 0;
+                font-size: 14px;
+            }
+            
+            .price-quote-image-content {
+                padding: 12px;
+            }
+            
+            .price-quote-image-title {
+                font-size: 16px;
+            }
+            
+            .price-quote-image-text {
+                font-size: 12px;
+            }
+            
+            .social-links a {
+                width: 30px;
+                height: 30px;
+                margin-right: 8px;
+            }
+            
+            .contact-tag {
+                font-size: 10px;
+                padding: 3px 10px;
             }
         }
     </style>
@@ -542,12 +640,11 @@
 <body>
     <!-- Get a Free Price Quote Section -->
     <section class="price-quote-section">
-        
         <div class="price-quote-container">
             <div class="price-quote-header">
-                <span class="price-quote-subtitle" style="font-size: 20px;">Request a Quote</span>
-                <h2 class="price-quote-title" style="font-size:50px">Get a Free Price Quote</h2>
-                <p class="price-quote-description" style="font-size:16px">
+                <span class="price-quote-subtitle">Request a Quote</span>
+                <h2 class="price-quote-title">Get a Free Price Quote</h2>
+                <p class="price-quote-description">
                     Fill out the form below to receive a customized price quote for your academic needs.
                 </p>
             </div>
@@ -555,25 +652,25 @@
             <div class="price-quote-wrapper">
                 <!-- Left Side Image -->
                 <div class="price-quote-image-box">
-                    <img src="assignemnt-img.jpg" alt="Academic Services">
+                    <img src="ppt.jpeg" alt="Academic Services">
                     <div class="price-quote-image-overlay"></div>
                     <div class="price-quote-image-content">
                         <span class="contact-tag">Get in Touch</span>
                         <h3 class="price-quote-image-title">Connect With Us Now</h3>
                         <p class="price-quote-image-text">
-                            Need help immediately? Reach out directly through any of our channels for instant assistance with your academic needs. We're available 24/7 to support your success journey.
+                            Need help immediately? Reach out directly through any of our channels for instant assistance with your academic needs.
                         </p>
                         <div class="social-links">
-                            <a href="https://wa.me/1234567890" title="Chat on WhatsApp">
+                            <a href="#" title="Chat on WhatsApp">
                                 <i class="fab fa-whatsapp"></i>
                             </a>
-                            <a href="https://instagram.com/academicexcellence" title="Follow us on Instagram">
+                            <a href="#" title="Follow us on Instagram">
                                 <i class="fab fa-instagram"></i>
                             </a>
-                            <a href="https://facebook.com/academicexcellence" title="Like us on Facebook">
+                            <a href="#" title="Like us on Facebook">
                                 <i class="fab fa-facebook-f"></i>
                             </a>
-                            <a href="mailto:support@academicexcellence.com" title="Email us">
+                            <a href="#" title="Email us">
                                 <i class="fas fa-envelope"></i>
                             </a>
                         </div>
@@ -595,12 +692,26 @@
                         </p>
                     </div>
                     
-                    <form id="priceQuoteForm" class="price-quote-form">
+                    <!-- Updated form with Web3Forms integration -->
+                    <form id="priceQuoteForm" class="price-quote-form" action="https://api.web3forms.com/submit" method="POST">
+                        <!-- Web3Forms Access Key -->
+                        <input type="hidden" name="access_key" value="6964f5ae-e5b4-4f53-a119-11e42a9578b2">
+                        
+                        <!-- Honeypot Spam Protection -->
+                        <input type="checkbox" name="botcheck" style="display: none;">
+
                         <div class="price-quote-form-group">
                             <label for="quoteName" class="price-quote-form-label">
                                 <i class="fas fa-user"></i> Your Name
                             </label>
                             <input type="text" id="quoteName" name="name" class="price-quote-form-input" placeholder="Enter your full name" required>
+                        </div>
+                        
+                        <div class="price-quote-form-group">
+                            <label for="quoteEmail" class="price-quote-form-label">
+                                <i class="fas fa-envelope"></i> Email Address
+                            </label>
+                            <input type="email" id="quoteEmail" name="email" class="price-quote-form-input" placeholder="Enter your email address" required>
                         </div>
                         
                         <div class="price-quote-form-group">
@@ -631,7 +742,6 @@
                 </div>
             </div>
         </div>
-
     </section>
     
     <script>
@@ -639,42 +749,47 @@
             const quoteForm = document.getElementById('priceQuoteForm');
             const successMessage = document.getElementById('priceQuoteSuccessMessage');
             
-            quoteForm.addEventListener('submit', (e) => {
-                e.preventDefault();
+            quoteForm.addEventListener('submit', async (e) => {
+                // We don't prevent default here to allow the form to submit to Web3Forms
                 
-                // Get form values
-                const name = document.getElementById('quoteName').value;
-                const phone = document.getElementById('quotePhone').value;
-                const pages = document.getElementById('quotePages').value;
-                const message = document.getElementById('quoteMessage').value;
+                // Show loading state
+                const submitButton = quoteForm.querySelector('button[type="submit"]');
+                const originalButtonText = submitButton.innerHTML;
+                submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+                submitButton.disabled = true;
                 
-                // Here you would typically send the data to your server
-                // For demonstration, we'll just show the success message
-                
-                // Show success message
-                successMessage.style.display = 'block';
-                
-                // Hide the form
-                quoteForm.style.opacity = '0';
-                quoteForm.style.height = '0';
-                quoteForm.style.overflow = 'hidden';
-                quoteForm.style.transition = 'all 0.5s ease';
-                
-                // You can also reset the form
-                quoteForm.reset();
-                
-                // Scroll to the success message
-                successMessage.scrollIntoView({ behavior: 'smooth' });
-                
-                // Optional: After some time, you could redirect the user or show the form again
+                // Web3Forms will handle the actual submission
+                // We just handle the UI updates here
                 setTimeout(() => {
-                    // Reset the form visibility
-                    quoteForm.style.opacity = '1';
-                    quoteForm.style.height = 'auto';
+                    // Show success message
+                    successMessage.style.display = 'block';
                     
-                    // Hide success message
-                    successMessage.style.display = 'none';
-                }, 5000);
+                    // Hide the form
+                    quoteForm.style.opacity = '0';
+                    quoteForm.style.height = '0';
+                    quoteForm.style.overflow = 'hidden';
+                    quoteForm.style.transition = 'all 0.5s ease';
+                    
+                    // Reset the form
+                    quoteForm.reset();
+                    
+                    // Scroll to the success message
+                    successMessage.scrollIntoView({ behavior: 'smooth' });
+                    
+                    // After some time, restore the form
+                    setTimeout(() => {
+                        // Reset the form visibility
+                        quoteForm.style.opacity = '1';
+                        quoteForm.style.height = 'auto';
+                        
+                        // Reset button
+                        submitButton.innerHTML = originalButtonText;
+                        submitButton.disabled = false;
+                        
+                        // Hide success message
+                        successMessage.style.display = 'none';
+                    }, 5000);
+                }, 1500);
             });
             
             // Form validation enhancements
@@ -691,7 +806,7 @@
                     e.target.value = 1;
                 }
             });
-        });
-    </script>
-</body>
-</html>
+             });
+            </script>
+        </body>
+        </html>
