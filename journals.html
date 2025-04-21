@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Journal Services</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #3a1c71;
+            --primary-dark: #2a1561;
+            --secondary: #d76d77;
+            --accent: #ffaf7b;
+            --white: #ffffff;
+            --dark-text: #333333;
+            --light-text: #777777;
+            --light-bg: #fafafa;
+
+            /* Gradients */
+            --gradient: linear-gradient(135deg, #3a1c71, #d76d77, #ffaf7b);
+            --gradient-hover: linear-gradient(135deg, #4a2c81, #e77d87, #ffbf8b);
+            --gradient-light: linear-gradient(135deg, rgba(58, 28, 113, 0.9), rgba(215, 109, 119, 0.9), rgba(255, 175, 123, 0.9));
+
+            /* Shadows */
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+
+            /* Border Radius */
+            --border-radius-sm: 4px;
+            --border-radius: 8px;
+            --border-radius-lg: 12px;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-text);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            background: var(--gradient);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Journal Section Styles */
+        .our-journals {
+            width: 100%;
+            padding: 60px 6%;
+            position: relative;
+            overflow: hidden;
+            min-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-subtitle {
+            font-size: 16px;
+            color: var(--white);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            display: inline-block;
+            position: relative;
+        }
+
+        .section-subtitle::before {
+            content: '';
+            position: absolute;
+            left: -30px;
+            top: 50%;
+            width: 20px;
+            height: 2px;
+            background: var(--white);
+            transform: translateY(-50%);
+        }
+
+        .section-subtitle::after {
+            content: '';
+            position: absolute;
+            right: -30px;
+            top: 50%;
+            width: 20px;
+            height: 2px;
+            background: var(--white);
+            transform: translateY(-50%);
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 42px;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--white);
+            border-radius: 2px;
+        }
+
+        .section-description {
+            max-width: 800px;
+            margin: 0 auto;
+            color: var(--white);
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+        /* Services Container */
+        .services-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 40px; /* Increased gap between cards */
+            position: relative;
+            z-index: 1;
+            padding: 20px; /* Added padding around the container */
+        }
+
+        /* Journal Card */
+       /* Journal Card */
+.journal-card {
+    background-color: var(--white);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+    width: 320px;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+    height: 700px; /* Increased overall card height from 500px */
+    display: flex;
+    flex-direction: column;
+}
+
+.journal-image {
+    height: 500px; /* Increased image height from 260px */
+    overflow: hidden;
+    position: relative;
+}
+
+.journal-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.3s ease;
+}
+
+        .journal-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        
+        .journal-card:hover .journal-image img {
+            transform: scale(1.05);
+        }
+
+        .price-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: var(--secondary);
+            color: var(--white);
+            font-size: 16px;
+            font-weight: 700;
+            padding: 6px 12px;
+            border-radius: var(--border-radius-sm);
+            box-shadow: var(--shadow-sm);
+            z-index: 2;
+        }
+
+        .bestseller-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--primary);
+            color: var(--white);
+            font-size: 12px;
+            font-weight: 600;
+            padding: 5px 10px;
+            border-radius: var(--border-radius-sm);
+            box-shadow: var(--shadow-sm);
+            z-index: 2;
+        }
+
+        .discount-badge {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            background: var(--accent);
+            color: var(--dark-text);
+            font-size: 14px;
+            font-weight: 700;
+            padding: 5px 10px;
+            border-radius: var(--border-radius-sm);
+            box-shadow: var(--shadow-sm);
+            z-index: 2;
+            transform: rotate(-5deg);
+        }
+
+        .journal-content {
+            padding: 22px; /* Adjusted padding inside the card */
+            position: relative;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .journal-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--white);
+            border: 2px solid var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .journal-icon i {
+            font-size: 20px;
+            color: var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .journal-card:hover .journal-icon {
+            background: var(--gradient);
+            border-color: transparent;
+        }
+
+        .journal-card:hover .journal-icon i {
+            color: var(--white);
+            transform: rotate(360deg);
+        }
+
+        .journal-title {
+            font-weight: 700;
+            font-size: 18px;
+            margin-bottom: 10px; /* Adjusted margin */
+            color: var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .journal-description {
+            color: var(--light-text);
+            font-size: 14px; 
+            line-height: 1.6;
+            margin-bottom: 15px; /* Adjusted margin */
+            flex-grow: 1;
+        }
+
+
+        .journal-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px; /* Adjusted margin */
+        }
+
+        .original-price {
+            font-size: 14px;
+            color: var(--light-text);
+            text-decoration: line-through;
+        }
+
+        .current-price {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .order-button {
+            display: block;
+            width: 100%;
+            padding: 12px 0;
+            background: var(--gradient);
+            color: var(--white);
+            font-weight: 600;
+            text-align: center;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        .order-button:hover {
+            background: var(--gradient-hover);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .order-button i {
+            margin-right: 8px;
+        }
+
+        /* Decorative Elements */
+        .decorative-circle {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.1;
+            background: var(--white);
+        }
+
+        .circle-1 {
+            width: 300px;
+            height: 300px;
+            top: -100px;
+            right: -100px;
+        }
+
+        .circle-2 {
+            width: 200px;
+            height: 200px;
+            bottom: -50px;
+            left: -50px;
+        }
+
+        /* Date Picker Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background-color: var(--white);
+            margin: 10% auto;
+            padding: 30px; /* Increased padding */
+            border-radius: var(--border-radius-lg);
+            max-width: 450px; /* Slightly wider modal */
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            animation: modalFadeIn 0.3s;
+        }
+
+        @keyframes modalFadeIn {
+            from {opacity: 0; transform: translateY(-30px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 22px;
+            color: var(--light-text);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .close-modal:hover {
+            color: var(--primary);
+            transform: rotate(90deg);
+        }
+
+        .modal-header {
+            text-align: center;
+            margin-bottom: 25px; /* Increased margin */
+        }
+
+        .modal-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 26px; /* Larger font */
+            color: var(--primary);
+            margin-bottom: 10px; /* Increased margin */
+        }
+
+        .modal-description {
+            color: var(--light-text);
+            font-size: 15px; /* Slightly larger font */
+        }
+
+        .modal-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px; /* Increased gap */
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px; /* Increased gap */
+        }
+
+        .form-label {
+            font-weight: 600;
+            font-size: 15px; /* Slightly larger font */
+            color: var(--dark-text);
+        }
+
+        .form-input {
+            padding: 12px 15px; /* Increased padding */
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: var(--border-radius);
+            font-family: 'Poppins', sans-serif;
+            font-size: 15px; /* Slightly larger font */
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(58, 28, 113, 0.1);
+        }
+
+        .form-submit {
+            padding: 14px 0; /* Increased padding */
+            background: var(--gradient);
+            color: var(--white);
+            font-weight: 600;
+            font-size: 16px; /* Larger font */
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 15px; /* Increased margin */
+        }
+
+        .form-submit:hover {
+            background: var(--gradient-hover);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Rating stars */
+        .rating {
+            display: flex;
+            align-items: center;
+            gap: 2px; /* Small gap between stars */
+        }
+
+        /* Enhanced Responsive Styles */
+        @media (max-width: 1100px) {
+            .services-container {
+                gap: 30px; /* Slightly reduced gap on smaller screens */
+            }
+            
+            .journal-card {
+        width: 300px;
+        height: 580px; /* Adjusted for smaller screens */
+    }
+    
+    .journal-image {
+        height: 350px; /* Adjusted for smaller screens */
+    }
+        }
+
+        @media (max-width: 991px) {
+            .our-journals {
+                padding: 60px 4%;
+            }
+            
+            .section-title {
+                font-size: 36px;
+            }
+            
+            .services-container {
+                gap: 25px;
+            }
+            
+            .journal-image {
+                height: 350px; /* Slightly adjust image height */
+            }
+        }
+
+        @media (max-width: 768px) {
+            .our-journals {
+                padding: 50px 4%;
+                min-height: auto;
+            }
+            
+            .section-header {
+                margin-bottom: 30px;
+            }
+            
+            .section-title {
+                font-size: 32px;
+            }
+            
+            .services-container {
+                gap: 20px;
+            }
+            
+            .journal-card {
+        width: 280px;
+        height: 580px; /* Adjusted for smaller tablets */
+    }
+    
+    .journal-image {
+        height: 330px; /* Adjusted for smaller tablets */
+    }
+        }
+
+        @media (max-width: 650px) {
+            .services-container {
+                flex-direction: column;
+                align-items: center;
+                gap: 30px; /* Increased vertical gap between cards */
+            }
+            
+            .journal-card {
+        width: 100%;
+        max-width: 340px;
+        height: 600px; /* Increased height on mobile */
+    }
+    
+    .journal-image {
+        height: 350px; /* Increased image height on mobile */
+    }
+            
+            .modal-content {
+                margin: 15% auto;
+                width: 90%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .our-journals {
+                padding: 40px 3%;
+            }
+            
+            .section-subtitle {
+                font-size: 14px;
+            }
+            
+            .section-title {
+                font-size: 28px;
+            }
+            
+            .section-description {
+                font-size: 14px;
+            }
+            
+            .journal-content {
+                padding: 20px;
+            }
+            
+            .journal-title {
+                font-size: 16px;
+            }
+            
+            .journal-description {
+                font-size: 13px;
+            }
+            
+            .journal-image {
+                height: 300px; /* Still maintain good image height on smallest screens */
+            }
+            
+            .price-badge, .discount-badge, .bestseller-badge {
+                font-size: 12px;
+                padding: 4px 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Journal Section -->
+    <section class="our-journals">
+        <!-- Decorative elements -->
+        <div class="decorative-circle circle-1"></div>
+        <div class="decorative-circle circle-2"></div>
+        
+        <div class="section-header">
+            <span class="section-subtitle">Academic Excellence</span>
+            <h2 class="section-title">Our Journals</h2>
+            <p class="section-description">
+                High-quality academic journals crafted by experts in their fields to boost your academic performance
+            </p>
+        </div>
+        
+        <div class="services-container">
+            <!-- Physics Journal Card -->
+            <div class="journal-card">
+                <div class="journal-image">
+                    <img src="chem.webp" alt="Physics Journal">
+                    <div class="price-badge">₹399</div>
+                    <div class="discount-badge">30% OFF</div>
+                </div>
+                <div class="journal-content">
+                    <div class="journal-icon">
+                        <i class="fas fa-atom"></i>
+                    </div>
+                    <h3 class="journal-title">Physics Journal</h3>
+                    <p class="journal-description">
+                        Comprehensive physics journals covering mechanics, thermodynamics, electromagnetism, and quantum physics. Perfect for undergraduate and graduate students.
+                    </p>
+                    <div class="journal-meta">
+                        <div class="price-info">
+                            <div class="original-price">₹570</div>
+                            <div class="current-price">₹399</div>
+                        </div>
+                        <div class="rating">
+                            <i class="fas fa-star" style="color: #FFD700;"></i>
+                            <i class="fas fa-star" style="color: #FFD700;"></i>
+                            <i class="fas fa-star" style="color: #FFD700;"></i>
+                            <i class="fas fa-star" style="color: #FFD700;"></i>
+                            <i class="fas fa-star-half-alt" style="color: #FFD700;"></i>
+                        </div>
+                    </div>
+                    <button class="order-button" data-type="Physics Journal" data-price="399">
+                        <i class="fab fa-whatsapp"></i> Order Now
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Chemistry Journal Card -->
+            <div class="journal-card">
+                <div class="journal-image">
+                    <img src="/api/placeholder/400/320" alt="Chemistry Journal">
+                    <div class="price-badge">₹499</div>
+                    <div class="discount-badge">20% OFF</div>
+                </div>
+                <div class="journal-content">
+                    <div class="journal-icon">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                    <h3 class="journal-title">Chemistry Journal</h3>
+                    <p class="journal-description">
+                        Detailed chemistry journals covering organic, inorganic, physical, and analytical chemistry. Includes lab reports and research papers.
+                    </p>
+                    <div class="journal-meta">
+                        <div class="price-info">
+                            <div class="original-price">₹625</div>
+                            <div class="current-price">₹499</div>
+                        </div>
+                        <div class="rating">
+                            <i class="fas fa-star" style="color: #FFD700;"></i>
+                            <i class="fas fa-star" style="color: #FFD700;"></i>
+                            <i class="fas fa-star" style="color: #FFD700;"></i>
+                            <i class="fas fa-star" style="color: #FFD700;"></i>
+                            <i class="fas fa-star" style="color: #FFD700;"></i>
+                        </div>
+                    </div>
+                    <button class="order-button" data-type="Chemistry Journal" data-price="499">
+                        <i class="fab fa-whatsapp"></i> Order Now
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Biology Journal Card -->
+            <div class="journal-card">
+                <div class="journal-image">
+                    <img src="ppt.jpeg" alt="Biology Journal">
+                    <div class="price-badge">₹499</div>
+                    <div class="bestseller-badge">Bestseller</div>
+                    <div class="discount-badge">20% OFF</div>
+                </div>
+                <div class="journal-content">
+                    <div class="journal-icon">
+                        <i class="fas fa-dna"></i>
+                    </div>
+                    <h3 class="journal-title">Biology Journal</h3>
+                    <p class="journal-description">
+                        In-depth biology journals covering genetics, ecology, cell biology, physiology, and evolution. Tailored for academic excellence.
+                    </p>
+                    <div class="journal-meta">
+                        <div class="price-info">
+                            <div class="original-price">₹625</div>
+                            <div class="current-price">₹499</div>
+                        </div>
+                        <div class="rating">
+                            <i class="fas fa-star" style="color: #FFD700;"></i>
+                            <i class="fas fa-star" style="color: #FFD700;"></i>
+                            <i class="fas fa-star" style="color: #FFD700;"></i>
+                            <i class="fas fa-star" style="color: #FFD700;"></i>
+                            <i class="fas fa-star" style="color: #FFD700;"></i>
+                        </div>
+                    </div>
+                    <button class="order-button" data-type="Biology Journal" data-price="499">
+                        <i class="fab fa-whatsapp"></i> Order Now
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Date Picker Modal -->
+    <div id="orderModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-header">
+                <h3 class="modal-title">Complete Your Order</h3>
+                <p class="modal-description">Please select your delivery date</p>
+            </div>
+            <form id="orderForm" class="modal-form">
+                <div class="form-group">
+                    <label for="delivery-date" class="form-label">When do you need this by?</label>
+                    <input type="date" id="delivery-date" class="form-input" required min="">
+                </div>
+                <button type="submit" class="form-submit">
+                    <i class="fab fa-whatsapp"></i> Complete Order via WhatsApp
+                </button>
+            </form>
+        </div>
+    </div>
+        
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Set minimum date to today
+            const today = new Date();
+            const yyyy = today.getFullYear();
+            const mm = String(today.getMonth() + 1).padStart(2, '0');
+            const dd = String(today.getDate()).padStart(2, '0');
+            const todayStr = `${yyyy}-${mm}-${dd}`;
+            document.getElementById('delivery-date').setAttribute('min', todayStr);
+            
+            // Modal functionality
+            const modal = document.getElementById('orderModal');
+            const orderButtons = document.querySelectorAll('.order-button');
+            const closeModal = document.querySelector('.close-modal');
+            const orderForm = document.getElementById('orderForm');
+            
+            let currentJournalType = '';
+            let currentJournalPrice = '';
+            
+            // WhatsApp number - replace with your actual number
+            const whatsappNumber = '911234567890';
+            
+            // Open modal on order button click
+            orderButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    currentJournalType = button.getAttribute('data-type');
+                    currentJournalPrice = button.getAttribute('data-price');
+                    
+                    // Update modal title
+                    document.querySelector('.modal-title').textContent = `Order ${currentJournalType}`;
+                    
+                    modal.style.display = 'block';
+                });
+            });
+            
+            // Close modal
+            closeModal.addEventListener('click', () => {
+                modal.style.display = 'none';
+            });
+            
+            // Close modal when clicking outside
+            window.addEventListener('click', (event) => {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+            
+            // Form submission - redirect to WhatsApp
+            orderForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                const deliveryDate = document.getElementById('delivery-date').value;
+                
+                // Format the message
+                const message = `${currentJournalType} - ${currentJournalPrice} rs and I want it by ${deliveryDate}`;
+                
+                // Encode the message for URL
+                const encodedMessage = encodeURIComponent(message);
+                
+                // Create WhatsApp URL
+                const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+                
+                // Redirect to WhatsApp
+                window.open(whatsappURL, '_blank');
+                
+                // Close the modal
+                modal.style.display = 'none';
+            });
+
+            // Animation effects
+            const journalCards = document.querySelectorAll('.journal-card');
+            
+            // Function to check if element is in viewport
+            function isInViewport(element) {
+                const rect = element.getBoundingClientRect();
+                return (
+                    rect.top >= 0 &&
+                    rect.left >= 0 &&
+                    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+                );
+            }
+        });
+    </script>
+</body>
+</html>

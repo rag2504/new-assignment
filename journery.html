@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Journey So Far</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #3a1c71;
+            --primary-dark: #2a1561;
+            --secondary: #d76d77;
+            --accent: #ffaf7b;
+            --white: #ffffff;
+            --dark-text: #333333;
+            --light-text: #777777;
+            --light-bg: #fafafa;
+
+            /* Gradients */
+            --gradient: linear-gradient(135deg, #3a1c71, #d76d77, #ffaf7b);
+            --gradient-hover: linear-gradient(135deg, #4a2c81, #e77d87, #ffbf8b);
+            --gradient-light: linear-gradient(135deg, rgba(58, 28, 113, 0.9), rgba(215, 109, 119, 0.9), rgba(255, 175, 123, 0.9));
+
+            /* Shadows */
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+
+            /* Border Radius */
+            --border-radius-sm: 4px;
+            --border-radius: 8px;
+            --border-radius-lg: 12px;
+            
+            /* Updated Phase Year Color for better visibility */
+            --phase-year-color: #ffffff;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-text);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            background: var(--gradient);
+            background-attachment: fixed;
+        }
+
+        /* Achievement Section Styles (renamed from journey-section) */
+        .milestones-content-section {
+            padding: 90px 6%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .milestones-inner-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .milestones-header-block {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .milestones-subtitle {
+            font-size: 16px;
+            color: var(--white);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            display: inline-block;
+            position: relative;
+        }
+
+        .milestones-subtitle::before, .milestones-subtitle::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 20px;
+            height: 2px;
+            background: var(--white);
+            transform: translateY(-50%);
+        }
+
+        .milestones-subtitle::before {
+            left: -30px;
+        }
+
+        .milestones-subtitle::after {
+            right: -30px;
+        }
+
+        .milestones-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 42px;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .milestones-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--white);
+            border-radius: 2px;
+        }
+
+        .milestones-description {
+            max-width: 800px;
+            margin: 0 auto;
+            color: var(--white);
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        /* Stats Grid */
+        .achievement-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        .achievement-stat-card {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: var(--border-radius-lg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 30px;
+            text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .achievement-stat-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+            background-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .achievement-stat-icon {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 20px;
+            background: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 1;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+        }
+
+        .achievement-stat-card:hover .achievement-stat-icon {
+            background: var(--primary);
+            transform: scale(1.1);
+        }
+
+        .achievement-stat-icon i {
+            font-size: 30px;
+            color: var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .achievement-stat-card:hover .achievement-stat-icon i {
+            color: var(--white);
+            transform: rotate(360deg);
+        }
+
+        .achievement-stat-number {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 10px;
+            font-family: 'Playfair Display', serif;
+            position: relative;
+            display: inline-block;
+        }
+
+        .achievement-stat-title {
+            font-size: 16px;
+            color: var(--white);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Growth Timeline */
+        .journey-growth-container {
+            margin: 60px auto;
+            max-width: 1000px;
+        }
+
+        .journey-growth-heading {
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--white);
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            font-weight: 600;
+        }
+
+        .journey-growth-phases {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .journey-growth-phase {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: var(--border-radius-lg);
+            padding: 30px;
+            text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+            box-shadow: var(--shadow-md);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeIn 0.8s forwards;
+        }
+
+        .journey-growth-phase:nth-child(2) {
+            animation-delay: 0.3s;
+        }
+
+        .journey-growth-phase:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .journey-growth-phase:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+            background-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .journey-phase-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            background: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+        }
+
+        .journey-growth-phase:hover .journey-phase-icon {
+            transform: scale(1.1);
+            background: var(--primary);
+        }
+
+        .journey-phase-icon i {
+            font-size: 36px;
+            color: var(--white);
+        }
+
+        .journey-phase-year {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--phase-year-color);
+            margin-bottom: 5px;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        .journey-phase-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 15px;
+        }
+
+        .journey-phase-description {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .journey-phase-highlight {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: var(--border-radius-sm);
+            padding: 6px 12px;
+            margin: 5px;
+            font-size: 12px;
+            color: var(--white);
+            font-weight: 500;
+        }
+
+        /* Progress Bars */
+        .journey-progress-section {
+            margin: 60px auto;
+            max-width: 800px;
+        }
+
+        .journey-progress-heading {
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--white);
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            font-weight: 600;
+        }
+
+        .journey-progress-wrap {
+            margin-bottom: 25px;
+        }
+
+        .journey-progress-title {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            color: var(--white);
+            font-weight: 500;
+        }
+
+        .journey-progress-value {
+            font-size: 14px;
+        }
+
+        .journey-progress-bar {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: var(--border-radius-sm);
+            height: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .journey-progress-fill {
+            position: absolute;
+            height: 100%;
+            border-radius: var(--border-radius-sm);
+            background: var(--accent);
+            width: 0;
+            transition: width 2s ease;
+        }
+
+        /* Animated Counter */
+        .achievement-stat-number {
+            animation: countUp 3s ease-out forwards;
+        }
+
+        @keyframes countUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Decorative Elements */
+        .milestone-decorative-circle {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.1;
+            background: var(--white);
+        }
+
+        .milestone-circle-1 {
+            width: 300px;
+            height: 300px;
+            top: -50px;
+            right: -100px;
+        }
+
+        .milestone-circle-2 {
+            width: 200px;
+            height: 200px;
+            bottom: 100px;
+            left: -50px;
+        }
+
+        .milestone-circle-3 {
+            width: 150px;
+            height: 150px;
+            bottom: 50%;
+            right: 10%;
+        }
+
+        /* Enhanced Responsive Styles */
+        @media (max-width: 1200px) {
+            .milestones-content-section {
+                padding: 80px 4%;
+            }
+            
+            .achievement-stat-card {
+                padding: 25px;
+            }
+            
+            .achievement-stat-number {
+                font-size: 40px;
+            }
+        }
+
+        @media (max-width: 991px) {
+            .milestones-content-section {
+                padding: 70px 4%;
+            }
+            
+            .milestones-title {
+                font-size: 36px;
+            }
+            
+            .achievement-stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .journey-growth-phases {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .milestones-content-section {
+                padding: 60px 4%;
+            }
+            
+            .milestones-header-block {
+                margin-bottom: 40px;
+            }
+            
+            .milestones-title {
+                font-size: 32px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .milestones-content-section {
+                padding: 50px 3%;
+            }
+            
+            .milestones-subtitle {
+                font-size: 14px;
+            }
+            
+            .milestones-title {
+                font-size: 28px;
+            }
+            
+            .achievement-stats-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .achievement-stat-card {
+                padding: 20px;
+            }
+            
+            .achievement-stat-number {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="milestones-content-section">
+        <div class="milestones-inner-container">
+            <div class="milestones-header-block">
+                <span class="milestones-subtitle">Our Milestones</span>
+                <h2 class="milestones-title">Our Journey So Far</h2>
+                <p class="milestones-description">
+                    Since our establishment, we've been committed to academic excellence and have achieved remarkable milestones. Here's a glimpse of our journey and the impact we've made in the academic world.
+                </p>
+            </div>
+            
+            <!-- Stats Grid -->
+            <div class="achievement-stats-grid">
+                <!-- Pages Written -->
+                <div class="achievement-stat-card">
+                    <div class="achievement-stat-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <div class="achievement-stat-number" data-target="125000">125,000+</div>
+                    <div class="achievement-stat-title">Pages Written</div>
+                </div>
+                
+                <!-- Projects Completed -->
+                <div class="achievement-stat-card">
+                    <div class="achievement-stat-icon">
+                        <i class="fas fa-tasks"></i>
+                    </div>
+                    <div class="achievement-stat-number" data-target="7500">7,500+</div>
+                    <div class="achievement-stat-title">Projects Completed</div>
+                </div>
+                
+                <!-- Books Published -->
+                <div class="achievement-stat-card">
+                    <div class="achievement-stat-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <div class="achievement-stat-number" data-target="250">250+</div>
+                    <div class="achievement-stat-title">Books Published</div>
+                </div>
+                
+                <!-- Happy Clients -->
+                <div class="achievement-stat-card">
+                    <div class="achievement-stat-icon">
+                        <i class="fas fa-smile"></i>
+                    </div>
+                    <div class="achievement-stat-number" data-target="5000">5,000+</div>
+                    <div class="achievement-stat-title">Happy Clients</div>
+                </div>
+            </div>
+            
+            <!-- Growth Phases - New Section that replaces Timeline -->
+            <div class="journey-growth-container">
+                <h3 class="journey-growth-heading">Our 3-Year Growth Journey</h3>
+                <div class="journey-growth-phases">
+                    <!-- Phase 1 -->
+                    <div class="journey-growth-phase">
+                        <div class="journey-phase-icon">
+                            <i class="fas fa-seedling"></i>
+                        </div>
+                        <div class="journey-phase-year">2022</div>
+                        <h4 class="journey-phase-title">The Foundation</h4>
+                        <p class="journey-phase-description">
+                            Started with a small team of 5 academic experts focusing on college-level assignments with a vision to provide exceptional academic support.
+                        </p>
+                        <div class="journey-phase-highlights">
+                            <span class="journey-phase-highlight">500+ Projects</span>
+                            <span class="journey-phase-highlight">10 Subject Areas</span>
+                            <span class="journey-phase-highlight">Local Focus</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Phase 2 -->
+                    <div class="journey-growth-phase">
+                        <div class="journey-phase-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="journey-phase-year">2023</div>
+                        <h4 class="journey-phase-title">Rapid Expansion</h4>
+                        <p class="journey-phase-description">
+                            Expanded to 20+ specialists covering more academic disciplines. Launched book writing services and reached our 2500th project milestone.
+                        </p>
+                        <div class="journey-phase-highlights">
+                            <span class="journey-phase-highlight">2,500+ Projects</span>
+                            <span class="journey-phase-highlight">30 Subject Areas</span>
+                            <span class="journey-phase-highlight">National Reach</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Phase 3 -->
+                    <div class="journey-growth-phase">
+                        <div class="journey-phase-icon">
+                            <i class="fas fa-globe-americas"></i>
+                        </div>
+                        <div class="journey-phase-year">2024-Present</div>
+                        <h4 class="journey-phase-title">Global Recognition</h4>
+                        <p class="journey-phase-description">
+                            Now serving clients in over 30 countries with a team of 50+ academic experts. Established partnerships with educational institutions worldwide.
+                        </p>
+                        <div class="journey-phase-highlights">
+                            <span class="journey-phase-highlight">7,500+ Projects</span>
+                            <span class="journey-phase-highlight">100+ Subject Areas</span>
+                            <span class="journey-phase-highlight">Global Presence</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Decorative elements -->
+        <div class="milestone-decorative-circle milestone-circle-1"></div>
+        <div class="milestone-decorative-circle milestone-circle-2"></div>
+        <div class="milestone-decorative-circle milestone-circle-3"></div>
+    </section>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Animate Counter
+            const statsNumbers = document.querySelectorAll('.achievement-stat-number');
+            
+            statsNumbers.forEach(statNumber => {
+                const target = parseInt(statNumber.getAttribute('data-target').replace(/,/g, ''));
+                const duration = 2000; // ms
+                const framesPerSecond = 60;
+                const increment = target / (duration / 1000 * framesPerSecond);
+                
+                let current = 0;
+                const updateCounter = () => {
+                    current += increment;
+                    if (current < target) {
+                        statNumber.textContent = Math.ceil(current).toLocaleString() + '+';
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        statNumber.textContent = target.toLocaleString() + '+';
+                    }
+                };
+                
+                // Start the animation when element is in viewport
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            requestAnimationFrame(updateCounter);
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.1 });
+                
+                observer.observe(statNumber);
+            });
+            
+            // Enhanced hover effects for stat cards
+            const statCards = document.querySelectorAll('.achievement-stat-card');
+            
+            statCards.forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    card.style.transform = 'translateY(-10px)';
+                    card.style.backgroundColor = 'rgba(255, 255, 255, 0.15)';
+                });
+                
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'translateY(0)';
+                    card.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

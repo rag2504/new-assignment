@@ -1,490 +1,697 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title></title>
-	<link rel="stylesheet" type="text/css" href="abc.css">
-</head>
-<style>
-/* Journals Section Styles */
-.journals-section {
-    padding: 80px 6%;
-    position: relative;
-    background: var(--light-bg);
-}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academic Excellence Services - Price Quote</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-.section-header {
-    text-align: center;
-    margin-bottom: 50px;
-}
+        :root {
+            --primary: #3a1c71;
+            --primary-dark: #2a1561;
+            --secondary: #d76d77;
+            --accent: #ffaf7b;
+            --white: #ffffff;
+            --dark-text: #333333;
+            --light-text: #777777;
+            --light-bg: #fafafa;
 
-.section-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: var(--primary);
-    margin-bottom: 12px;
-    position: relative;
-}
+            /* Gradients */
+            --gradient: linear-gradient(135deg, #3a1c71, #d76d77, #ffaf7b);
+            --gradient-hover: linear-gradient(135deg, #4a2c81, #e77d87, #ffbf8b);
+            --gradient-dark: linear-gradient(135deg, #2a1561, #c75d67, #ef9f6b);
+            --gradient-light: linear-gradient(135deg, rgba(58, 28, 113, 0.9), rgba(215, 109, 119, 0.9), rgba(255, 175, 123, 0.9));
 
-.section-subtitle {
-    font-size: 1.1rem;
-    color: var(--light-text);
-    margin-bottom: 20px;
-}
+            /* Shadows */
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
 
-.section-divider {
-    height: 4px;
-    width: 80px;
-    background: var(--gradient);
-    margin: 0 auto;
-    border-radius: 2px;
-}
+            /* Border Radius */
+            --border-radius-sm: 4px;
+            --border-radius: 8px;
+            --border-radius-lg: 12px;
+        }
 
-.journals-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    margin-top: 40px;
-}
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-text);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            background: var(--gradient);
+            background-attachment: fixed;
+        }
 
-.journal-card {
-    background: var(--white);
-    border-radius: var(--border-radius-lg);
-    overflow: hidden;
-    box-shadow: var(--shadow-md);
-    transition: var(--transition);
-    position: relative;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-}
+        
 
-.journal-card:hover {
-    transform: translateY(-8px);
-    box-shadow: var(--shadow-lg);
-}
+         .price-quote-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
 
-.journal-badge {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    background: var(--gradient);
-    color: white;
-    padding: 5px 12px;
-    border-radius: 50px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    z-index: 2;
-}
+        /* Quote Section Styles - REDUCED HEIGHT */
+        .price-quote-section {
+            padding: 40px 0; /* Reduced from 80px */
+            position: relative;
+            overflow: hidden;
+        }
 
-.journal-image {
-    height: 250px;
-    overflow: hidden;
-    position: relative;
-}
+        .price-quote-header {
+            text-align: center;
+            margin-bottom: 30px; /* Reduced from 60px */
+            position: relative;
+            z-index: 1;
+            margin-top: 100px;
+            margin-bottom: 100px;
+        }
 
-.journal-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: var(--transition);
-}
+        .price-quote-subtitle {
+            font-size: 14px; /* Reduced from 16px */
+            color: var(--white);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px; /* Reduced from 15px */
+            display: inline-block;
+            position: relative;
+        }
 
-.journal-card:hover .journal-image img {
-    transform: scale(1.05);
-}
+        .price-quote-subtitle::before, .price-quote-subtitle::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 20px;
+            height: 2px;
+            background: var(--white);
+            transform: translateY(-50%);
+        }
 
-.journal-content {
-    padding: 25px;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-}
+        .price-quote-subtitle::before {
+            left: -30px;
+        }
 
-.journal-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.4rem;
-    font-weight: 600;
-    margin-bottom: 12px;
-    color: var(--dark-text);
-}
+        .price-quote-subtitle::after {
+            right: -30px;
+        }
 
-.journal-rating {
-    display: flex;
-    align-items: center;
-    margin-bottom: 15px;
-    font-size: 0.9rem;
-}
+        .price-quote-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 36px; /* Reduced from 42px */
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 15px; /* Reduced from 20px */
+            position: relative;
+            display: inline-block;
+        }
 
-.journal-rating i {
-    color: #FFD700;
-    margin-right: 2px;
-}
+        .price-quote-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px; /* Reduced from -10px */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70px; /* Reduced from 80px */
+            height: 2px; /* Reduced from 3px */
+            background: var(--white);
+            border-radius: 2px;
+        }
 
-.rating-count {
-    color: var(--light-text);
-    margin-left: 5px;
-    font-size: 0.8rem;
-}
+        .price-quote-description {
+            max-width: 800px;
+            margin: 0 auto;
+            color: var(--white);
+            font-size: 15px; /* Reduced from 16px */
+            line-height: 1.7; /* Reduced from 1.8 */
+            margin-bottom: 20px;
+        }
 
-.journal-price {
-    display: flex;
-    align-items: center;
-    margin-bottom: 15px;
-    font-weight: 600;
-}
+        /* Quote Form Styles */
+        .price-quote-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+            gap: 30px; /* Reduced from 40px */
+            position: relative;
+            z-index: 2;
+        }
 
-.price {
-    font-size: 1.3rem;
-    color: var(--secondary);
-    margin-right: 10px;
-}
+        .price-quote-image-box {
+            flex: 1;
+            max-width: 480px;
+            position: relative;
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            height: 450px; /* Fixed height */
+        }
 
-.original-price {
-    font-size: 0.9rem;
-    color: var(--light-text);
-    text-decoration: line-through;
-}
+        .price-quote-image-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
 
-.journal-description {
-    font-size: 0.95rem;
-    color: var(--light-text);
-    margin-bottom: 20px;
-    flex-grow: 1;
-}
+        .price-quote-image-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-dark);
+            opacity: 0.4;
+        }
 
-.journal-actions {
-    display: flex;
-    gap: 10px;
-    margin-top: auto;
-}
+        .price-quote-image-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 25px; /* Reduced from 30px */
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: var(--white);
+        }
 
-.add-to-cart-btn, .view-details-btn {
-    flex: 1;
-    padding: 10px 15px;
-    font-size: 0.9rem;
-    font-weight: 500;
-    border-radius: var(--border-radius);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    cursor: pointer;
-    transition: var(--transition);
-}
+        .price-quote-image-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px; /* Reduced from 28px */
+            font-weight: 700;
+            margin-bottom: 8px; /* Reduced from 10px */
+        }
 
-.add-to-cart-btn {
-    background: var(--gradient);
-    color: white;
-    border: none;
-}
+        .price-quote-image-text {
+            font-size: 14px; /* Reduced from 16px */
+            line-height: 1.5; /* Reduced from 1.6 */
+        }
+        
+        /* New social media styles */
+        .social-links {
+            display: flex;
+            align-items: center;
+            margin-top: 15px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            margin-right: 12px;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .social-links a:hover {
+            background: var(--white);
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .contact-tag {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 12px;
+            border-radius: 20px;
+            margin-bottom: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
 
-.add-to-cart-btn:hover {
-    background: var(--gradient-hover);
-    transform: translateY(-3px);
-}
+        .price-quote-form-box {
+            flex: 1;
+            max-width: 520px;
+            background-color: var(--white);
+            border-radius: var(--border-radius-lg);
+            padding: 30px; /* Reduced from 40px */
+            box-shadow: var(--shadow-lg);
+            height: 450px; /* Match height with left side */
+            overflow-y: auto; /* Add scroll if content overflows */
+        }
 
-.view-details-btn {
-    background: transparent;
-    color: var(--primary);
-    border: 1px solid var(--primary);
-    text-decoration: none;
-}
+        .price-quote-form-header {
+            text-align: center;
+            margin-bottom: 20px; /* Reduced from 30px */
+        }
 
-.view-details-btn:hover {
-    background: var(--primary-light);
-    transform: translateY(-3px);
-}
+        .price-quote-form-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px; /* Reduced from 28px */
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 8px; /* Reduced from 10px */
+        }
 
-.cart-icon-container {
-    position: absolute;
-    top: 80px;
-    right: 6%;
-    z-index: 10;
-}
+        .price-quote-form-description {
+            color: var(--light-text);
+            font-size: 14px; /* Reduced from 15px */
+        }
 
-.cart-icon {
-    background: var(--white);
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: var(--shadow-md);
-    text-decoration: none;
-    position: relative;
-    transition: var(--transition);
-}
+        .price-quote-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px; /* Reduced from 20px */
+        }
 
-.cart-icon:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-lg);
-    background: var(--primary-light);
-}
+        .price-quote-form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px; /* Reduced from 8px */
+        }
 
-.cart-icon i {
-    font-size: 1.2rem;
-    color: var(--primary);
-}
+        .price-quote-form-label {
+            font-weight: 600;
+            font-size: 14px; /* Reduced from 15px */
+            color: var(--dark-text);
+            display: flex;
+            align-items: center;
+        }
 
-.cart-count {
-    position: absolute;
-    top: -5px;
-    right: -5px;
-    background: var(--secondary);
-    color: white;
-    width: 22px;
-    height: 22px;
-    border-radius: 50%;
-    font-size: 0.8rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 600;
-}
+        .price-quote-form-label i {
+            color: var(--primary);
+            margin-right: 8px;
+        }
 
-.cart-notification {
-    position: fixed;
-    bottom: -100px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: var(--primary);
-    color: white;
-    padding: 12px 25px;
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow-md);
-    z-index: 1000;
-    transition: bottom 0.3s ease;
-    font-weight: 500;
-}
+        .price-quote-form-input {
+            padding: 10px 12px; /* Reduced from 12px 15px */
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: var(--border-radius);
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px; /* Reduced from 15px */
+            transition: all 0.3s ease;
+        }
 
-.cart-notification.show {
-    bottom: 30px;
-}
+        .price-quote-form-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(58, 28, 113, 0.1);
+        }
 
-/* Responsive styles */
-@media screen and (max-width: 768px) {
-    .journals-section {
-        padding: 60px 4%;
-    }
-    
-    .section-title {
-        font-size: 2rem;
-    }
-    
-    .cart-icon-container {
-        top: 60px;
-        right: 4%;
-    }
-    
-    .journals-container {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 20px;
-    }
-}
+        textarea.price-quote-form-input {
+            min-height: 100px; /* Reduced from 120px */
+            resize: vertical;
+        }
 
-@media screen and (max-width: 480px) {
-    .journal-actions {
-        flex-direction: column;
-    }
-    
-    .cart-icon-container {
-        top: 20px;
-    }
-}
-</style>
+        .price-quote-form-submit {
+            padding: 12px 0; /* Reduced from 14px */
+            background: var(--gradient);
+            color: var(--white);
+            font-weight: 600;
+            font-size: 15px; /* Reduced from 16px */
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 8px; /* Reduced from 10px */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
 
-<body>
-	<!-- HTML SECTION -->
-<!-- Written Journals Section -->
-<section class="journals-section" id="journals">
-    <div class="section-header">
-        <h2 class="section-title">Written Journals</h2>
-        <p class="section-subtitle">Premium academic journals for your studies</p>
-        <div class="section-divider"></div>
-    </div>
+        .price-quote-form-submit:hover {
+            background: var(--gradient-hover);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
 
-    <div class="cart-icon-container">
-        <a href="cart.html" class="cart-icon">
-            <i class="fas fa-shopping-cart"></i>
-            <span class="cart-count">0</span>
-        </a>
-    </div>
+        /* Animated elements */
+        .price-quote-badge {
+            position: absolute;
+            top: -15px;
+            right: 30px;
+            background: var(--accent);
+            color: var(--primary-dark);
+            font-weight: 700;
+            font-size: 16px; /* Reduced from 18px */
+            padding: 8px 16px; /* Reduced from 10px 20px */
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-md);
+            transform: rotate(5deg);
+            z-index: 3;
+            animation: float-tag 3s ease-in-out infinite;
+        }
 
-    <div class="journals-container">
-        <!-- Physics Journal -->
-        <div class="journal-card">
-            <div class="journal-badge">Bestseller</div>
-            <div class="journal-image">
-                <img src="chem.webp" alt="Physics Journal">
-            </div>
-            <div class="journal-content">
-                <h3 class="journal-title">Physics Journal</h3>
-                <div class="journal-rating">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-                    <span class="rating-count">(124)</span>
-                </div>
-                <div class="journal-price">
-                    <span class="price">₹399</span>
-                    <span class="original-price">₹599</span>
-                </div>
-                <p class="journal-description">Comprehensive physics journal with solved examples, formulas, and practice problems.</p>
-                <div class="journal-actions">
-                    <button class="add-to-cart-btn" data-id="physics" data-price="399" data-name="Physics Journal">
-                        <i class="fas fa-cart-plus"></i> Add to Cart
-                    </button>
-                    <a href="journal-details.html?id=physics" class="view-details-btn">
-                        <i class="fas fa-eye"></i> View Details
-                    </a>
-                </div>
-            </div>
-        </div>
+        @keyframes float-tag {
+            0% { transform: translateY(0) rotate(5deg); }
+            50% { transform: translateY(-10px) rotate(5deg); }
+            100% { transform: translateY(0) rotate(5deg); }
+        }
 
-        <!-- Chemistry Journal -->
-        <div class="journal-card">
-            <div class="journal-badge">New</div>
-            <div class="journal-image">
-                <img src="chem.webp" alt="Chemistry Journal">
-            </div>
-            <div class="journal-content">
-                <h3 class="journal-title">Chemistry Journal</h3>
-                <div class="journal-rating">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <span class="rating-count">(98)</span>
-                </div>
-                <div class="journal-price">
-                    <span class="price">₹499</span>
-                    <span class="original-price">₹699</span>
-                </div>
-                <p class="journal-description">In-depth chemistry journal covering organic, inorganic chemistry with experiment guides.</p>
-                <div class="journal-actions">
-                    <button class="add-to-cart-btn" data-id="chemistry" data-price="499" data-name="Chemistry Journal">
-                        <i class="fas fa-cart-plus"></i> Add to Cart
-                    </button>
-                    <a href="journal-details.html?id=chemistry" class="view-details-btn">
-                        <i class="fas fa-eye"></i> View Details
-                    </a>
-                </div>
-            </div>
-        </div>
+        /* Decorative Elements */
+        .price-quote-decorative-circle {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.1;
+            background: var(--white);
+        }
 
-        <!-- Biology Journal -->
-        <div class="journal-card">
-            <div class="journal-badge">Popular</div>
-            <div class="journal-image">
-                <img src="chem.webp" alt="Biology Journal">
-            </div>
-            <div class="journal-content">
-                <h3 class="journal-title">Biology Journal</h3>
-                <div class="journal-rating">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="far fa-star"></i>
-                    <span class="rating-count">(87)</span>
-                </div>
-                <div class="journal-price">
-                    <span class="price">₹499</span>
-                    <span class="original-price">₹699</span>
-                </div>
-                <p class="journal-description">Complete biology journal with detailed diagrams, case studies, and concept explanations.</p>
-                <div class="journal-actions">
-                    <button class="add-to-cart-btn" data-id="biology" data-price="499" data-name="Biology Journal">
-                        <i class="fas fa-cart-plus"></i> Add to Cart
-                    </button>
-                    <a href="journal-details.html?id=biology" class="view-details-btn">
-                        <i class="fas fa-eye"></i> View Details
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+        .price-quote-circle-1 {
+            width: 300px;
+            height: 300px;
+            top: -50px;
+            right: -100px;
+        }
 
-<!-- JAVASCRIPT -->
-<script>
-// Cart functionality
-document.addEventListener('DOMContentLoaded', function() {
-    // Initialize cart from localStorage
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
-    updateCartCount();
+        .price-quote-circle-2 {
+            width: 200px;
+            height: 200px;
+            bottom: 100px;
+            left: -50px;
+        }
 
-    // Add event listeners to Add to Cart buttons
-    const addToCartButtons = document.querySelectorAll('.add-to-cart-btn');
-    addToCartButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const productId = this.dataset.id;
-            const productName = this.dataset.name;
-            const productPrice = parseInt(this.dataset.price);
-            
-            // Check if product already in cart
-            const existingProductIndex = cart.findIndex(item => item.id === productId);
-            
-            if (existingProductIndex > -1) {
-                // Increment quantity if already in cart
-                cart[existingProductIndex].quantity += 1;
-            } else {
-                // Add new item to cart
-                cart.push({
-                    id: productId,
-                    name: productName,
-                    price: productPrice,
-                    quantity: 1
-                });
+        /* Success Message */
+        .price-quote-success-message {
+            display: none;
+            background-color: rgba(76, 175, 80, 0.1);
+            border: 1px solid #4CAF50;
+            color: #4CAF50;
+            padding: 15px;
+            border-radius: var(--border-radius);
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        /* IMPROVED RESPONSIVE STYLES */
+        @media (max-width: 1024px) {
+            .price-quote-wrapper {
+                gap: 25px;
             }
             
-            // Save cart to localStorage
-            localStorage.setItem('cart', JSON.stringify(cart));
+            .price-quote-image-box {
+                max-width: 45%;
+                height: 420px;
+            }
             
-            // Update cart count
-            updateCartCount();
+            .price-quote-form-box {
+                max-width: 55%;
+                height: 420px;
+            }
+        }
+
+        @media (max-width: 991px) {
+            .price-quote-section {
+                padding: 30px 0;
+            }
             
-            // Show added to cart notification
-            showNotification(`${productName} added to cart!`);
+            .price-quote-wrapper {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+
+            .price-quote-image-box, .price-quote-form-box {
+                max-width: 100%;
+                width: 100%;
+            }
+
+            .price-quote-image-box {
+                height: 250px; /* Reduced height on tablets */
+            }
+            
+            .price-quote-form-box {
+                padding: 25px;
+                height: auto; /* Auto height on tablets */
+            }
+        }
+
+        @media (max-width: 768px) {
+            .price-quote-title {
+                font-size: 30px;
+            }
+            
+            .price-quote-description {
+                font-size: 14px;
+            }
+
+            .price-quote-badge {
+                font-size: 14px;
+                padding: 6px 14px;
+                right: 20px;
+            }
+            
+            .price-quote-form-title {
+                font-size: 22px;
+            }
+            
+            .price-quote-image-title {
+                font-size: 22px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .price-quote-section {
+                padding: 25px 0;
+            }
+            
+            .price-quote-header {
+                margin-bottom: 20px;
+            }
+
+            .price-quote-subtitle {
+                font-size: 12px;
+            }
+
+            .price-quote-title {
+                font-size: 26px;
+            }
+
+            .price-quote-form-box {
+                padding: 20px 15px;
+            }
+
+            .price-quote-form-title {
+                font-size: 20px;
+            }
+            
+            .price-quote-image-box {
+                height: 200px; /* Further reduced height on mobile */
+            }
+            
+            .price-quote-image-content {
+                padding: 15px;
+            }
+            
+            .price-quote-image-title {
+                font-size: 18px;
+                margin-bottom: 5px;
+            }
+            
+            .price-quote-image-text {
+                font-size: 12px;
+                line-height: 1.4;
+            }
+            
+            .price-quote-form-input {
+                padding: 8px 10px;
+            }
+            
+            textarea.price-quote-form-input {
+                min-height: 80px;
+            }
+            
+            .price-quote-form-submit {
+                padding: 10px 0;
+            }
+            
+            .price-quote-form-label {
+                font-size: 13px;
+            }
+        }
+
+        @media (max-width: 375px) {
+            .price-quote-title {
+                font-size: 22px;
+            }
+            
+            .price-quote-badge {
+                font-size: 12px;
+                padding: 5px 10px;
+                right: 15px;
+                top: -12px;
+            }
+            
+            .price-quote-form-title {
+                font-size: 18px;
+            }
+            
+            .price-quote-image-box {
+                height: 180px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Get a Free Price Quote Section -->
+    <section class="price-quote-section">
+        
+        <div class="price-quote-container">
+            <div class="price-quote-header">
+                <span class="price-quote-subtitle" style="font-size: 20px;">Request a Quote</span>
+                <h2 class="price-quote-title" style="font-size:50px">Get a Free Price Quote</h2>
+                <p class="price-quote-description" style="font-size:16px">
+                    Fill out the form below to receive a customized price quote for your academic needs.
+                </p>
+            </div>
+            
+            <div class="price-quote-wrapper">
+                <!-- Left Side Image -->
+                <div class="price-quote-image-box">
+                    <img src="assignemnt-img.jpg" alt="Academic Services">
+                    <div class="price-quote-image-overlay"></div>
+                    <div class="price-quote-image-content">
+                        <span class="contact-tag">Get in Touch</span>
+                        <h3 class="price-quote-image-title">Connect With Us Now</h3>
+                        <p class="price-quote-image-text">
+                            Need help immediately? Reach out directly through any of our channels for instant assistance with your academic needs. We're available 24/7 to support your success journey.
+                        </p>
+                        <div class="social-links">
+                            <a href="https://wa.me/1234567890" title="Chat on WhatsApp">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                            <a href="https://instagram.com/academicexcellence" title="Follow us on Instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://facebook.com/academicexcellence" title="Like us on Facebook">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="mailto:support@academicexcellence.com" title="Email us">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right Side Form -->
+                <div class="price-quote-form-box">
+                    <div class="price-quote-badge">Free Quote!</div>
+                    
+                    <div id="priceQuoteSuccessMessage" class="price-quote-success-message">
+                        <i class="fas fa-check-circle"></i> Your request has been submitted successfully. We'll contact you shortly!
+                    </div>
+                    
+                    <div class="price-quote-form-header">
+                        <h3 class="price-quote-form-title">Request Your Free Quote</h3>
+                        <p class="price-quote-form-description">
+                            Tell us about your project for a customized quote
+                        </p>
+                    </div>
+                    
+                    <form id="priceQuoteForm" class="price-quote-form">
+                        <div class="price-quote-form-group">
+                            <label for="quoteName" class="price-quote-form-label">
+                                <i class="fas fa-user"></i> Your Name
+                            </label>
+                            <input type="text" id="quoteName" name="name" class="price-quote-form-input" placeholder="Enter your full name" required>
+                        </div>
+                        
+                        <div class="price-quote-form-group">
+                            <label for="quotePhone" class="price-quote-form-label">
+                                <i class="fas fa-phone-alt"></i> Phone Number
+                            </label>
+                            <input type="tel" id="quotePhone" name="phone" class="price-quote-form-input" placeholder="Enter your phone number" required>
+                        </div>
+                        
+                        <div class="price-quote-form-group">
+                            <label for="quotePages" class="price-quote-form-label">
+                                <i class="fas fa-file-alt"></i> Number of Pages
+                            </label>
+                            <input type="number" id="quotePages" name="pages" class="price-quote-form-input" placeholder="How many pages do you need?" min="1" required>
+                        </div>
+                        
+                        <div class="price-quote-form-group">
+                            <label for="quoteMessage" class="price-quote-form-label">
+                                <i class="fas fa-comment-alt"></i> Your Message
+                            </label>
+                            <textarea id="quoteMessage" name="message" class="price-quote-form-input" placeholder="Describe your project requirements, deadlines, etc." required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="price-quote-form-submit">
+                            <i class="fas fa-paper-plane"></i> Get Your Free Quote
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const quoteForm = document.getElementById('priceQuoteForm');
+            const successMessage = document.getElementById('priceQuoteSuccessMessage');
+            
+            quoteForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                // Get form values
+                const name = document.getElementById('quoteName').value;
+                const phone = document.getElementById('quotePhone').value;
+                const pages = document.getElementById('quotePages').value;
+                const message = document.getElementById('quoteMessage').value;
+                
+                // Here you would typically send the data to your server
+                // For demonstration, we'll just show the success message
+                
+                // Show success message
+                successMessage.style.display = 'block';
+                
+                // Hide the form
+                quoteForm.style.opacity = '0';
+                quoteForm.style.height = '0';
+                quoteForm.style.overflow = 'hidden';
+                quoteForm.style.transition = 'all 0.5s ease';
+                
+                // You can also reset the form
+                quoteForm.reset();
+                
+                // Scroll to the success message
+                successMessage.scrollIntoView({ behavior: 'smooth' });
+                
+                // Optional: After some time, you could redirect the user or show the form again
+                setTimeout(() => {
+                    // Reset the form visibility
+                    quoteForm.style.opacity = '1';
+                    quoteForm.style.height = 'auto';
+                    
+                    // Hide success message
+                    successMessage.style.display = 'none';
+                }, 5000);
+            });
+            
+            // Form validation enhancements
+            const phoneInput = document.getElementById('quotePhone');
+            phoneInput.addEventListener('input', (e) => {
+                // Basic phone validation - only allow numbers and some special characters
+                e.target.value = e.target.value.replace(/[^\d+\-() ]/g, '');
+            });
+            
+            const pagesInput = document.getElementById('quotePages');
+            pagesInput.addEventListener('input', (e) => {
+                // Ensure pages is a positive number
+                if (e.target.value < 1) {
+                    e.target.value = 1;
+                }
+            });
         });
-    });
-    
-    // Function to update cart count
-    function updateCartCount() {
-        const cartCount = document.querySelector('.cart-count');
-        if (cartCount) {
-            const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
-            cartCount.textContent = totalItems;
-        }
-    }
-    
-    // Function to show notification
-    function showNotification(message) {
-        // Create notification element if it doesn't exist
-        let notification = document.querySelector('.cart-notification');
-        if (!notification) {
-            notification = document.createElement('div');
-            notification.className = 'cart-notification';
-            document.body.appendChild(notification);
-        }
-        
-        // Set message and show notification
-        notification.textContent = message;
-        notification.classList.add('show');
-        
-        // Hide notification after 3 seconds
-        setTimeout(() => {
-            notification.classList.remove('show');
-        }, 3000);
-    }
-});
-</script>
+    </script>
 </body>
 </html>
